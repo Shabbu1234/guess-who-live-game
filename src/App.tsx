@@ -17,9 +17,14 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
+  const isAdminRoute =
+    currentPath.includes('/admin') ||
+    window.location.hash.includes('admin') ||
+    window.location.search.includes('admin');
+
   // Check admin auth status
   useEffect(() => {
-    if (currentPath.startsWith('/admin')) {
+    if (isAdminRoute) {
       fetch('/api/admin/me')
         .then(r => r.json())
         .then(data => {
@@ -30,14 +35,14 @@ export const App: React.FC = () => {
     } else {
       setIsCheckingAdmin(false);
     }
-  }, [currentPath]);
+  }, [isAdminRoute]);
 
   const handleAdminLogout = async () => {
     await fetch('/api/admin/logout', { method: 'POST' });
     setIsAdminAuthenticated(false);
   };
 
-  if (currentPath.startsWith('/admin')) {
+  if (isAdminRoute) {
     if (isCheckingAdmin) {
       return (
         <div className="min-h-screen bg-[#0B0F19] flex items-center justify-center text-white">

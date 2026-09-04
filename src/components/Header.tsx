@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
         <div className="flex items-center space-x-2">
           {/* Admin Login Link */}
           <a
-            href="/admin"
+            href="#admin"
             title="Admin Login Portal"
             className="flex items-center space-x-1 bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 hover:text-purple-300 px-2 py-1 rounded-lg text-xs font-semibold transition-all"
           >
