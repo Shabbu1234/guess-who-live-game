@@ -1,0 +1,23 @@
+# Dependencies
+node_modules/
+
+# Environment & Database
+.env
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Build outputs
+dist/
+build/
+
+# Uploaded media (keep folder, ignore uploads)
+uploads/*
+!uploads/.gitkeep
+
+# System & IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
